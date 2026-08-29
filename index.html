@@ -1,64 +1,561 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta name="description" content="Dr Ignitious Digital Solutions - Reliable digital world.">
-  <meta name="theme-color" content="#0b3d91">
-  <title>Dr Ignitious Digital Solutions</title>
-  <link rel="stylesheet" href="style.css">
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description" content="Dr. Ignitious Digital Solutions — reliable phone accessories, digital services and practical technology support.">
+<meta name="theme-color" content="#0b1220">
+<title>Dr. Ignitious Digital Solutions | Reliable Digital World</title>
+
+<style>
+:root{
+  --bg:#07111f;
+  --card:#0e1b2d;
+  --card2:#12233a;
+  --text:#f7fafc;
+  --muted:#a9b7c8;
+  --accent:#22c55e;
+  --accent2:#38bdf8;
+  --line:#20324a
+}
+
+*{
+  box-sizing:border-box;
+  scroll-behavior:smooth
+}
+
+body{
+  margin:0;
+  font-family:system-ui,-apple-system,Segoe UI,Roboto,Arial,sans-serif;
+  background:linear-gradient(180deg,#07111f,#0a1525 55%,#07111f);
+  color:var(--text);
+  line-height:1.6
+}
+
+a{
+  text-decoration:none;
+  color:inherit
+}
+
+.container{
+  width:min(1100px,92%);
+  margin:auto
+}
+
+header{
+  position:sticky;
+  top:0;
+  z-index:10;
+  background:rgba(7,17,31,.92);
+  backdrop-filter:blur(12px);
+  border-bottom:1px solid var(--line)
+}
+
+.nav{
+  min-height:68px;
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  gap:15px
+}
+
+.brand{
+  font-weight:800;
+  font-size:1.05rem
+}
+
+.brand span{
+  color:var(--accent)
+}
+
+nav{
+  display:flex;
+  gap:18px;
+  font-size:.92rem
+}
+
+nav a{
+  color:var(--muted)
+}
+
+nav a:hover{
+  color:white
+}
+
+.hero{
+  padding:75px 0 55px
+}
+
+.badge{
+  display:inline-block;
+  padding:7px 12px;
+  border:1px solid #28506c;
+  border-radius:999px;
+  color:#9bdcff;
+  background:#0a2132;
+  font-size:.82rem;
+  font-weight:700
+}
+
+h1{
+  font-size:clamp(2.3rem,7vw,4.7rem);
+  line-height:1.03;
+  margin:18px 0 18px;
+  max-width:850px
+}
+
+h1 span{
+  color:var(--accent)
+}
+
+.hero p{
+  font-size:1.08rem;
+  color:var(--muted);
+  max-width:700px
+}
+
+.buttons{
+  display:flex;
+  flex-wrap:wrap;
+  gap:12px;
+  margin-top:26px
+}
+
+.btn{
+  display:inline-flex;
+  align-items:center;
+  justify-content:center;
+  padding:12px 18px;
+  border-radius:12px;
+  font-weight:800;
+  border:1px solid var(--line)
+}
+
+.btn.primary{
+  background:var(--accent);
+  color:#04110a;
+  border-color:var(--accent)
+}
+
+.btn.secondary{
+  background:var(--card);
+  color:white
+}
+
+section{
+  padding:58px 0
+}
+
+.section-title{
+  font-size:2rem;
+  margin:0 0 8px
+}
+
+.section-sub{
+  color:var(--muted);
+  margin:0 0 28px
+}
+
+.grid{
+  display:grid;
+  grid-template-columns:repeat(3,1fr);
+  gap:18px
+}
+
+.card{
+  background:linear-gradient(145deg,var(--card),#0a1728);
+  border:1px solid var(--line);
+  border-radius:18px;
+  padding:24px;
+  box-shadow:0 10px 35px rgba(0,0,0,.15)
+}
+
+.icon{
+  font-size:2rem
+}
+
+.card h3{
+  margin:12px 0 7px
+}
+
+.card p{
+  color:var(--muted);
+  margin:0
+}
+
+.steps{
+  counter-reset:step
+}
+
+.step{
+  position:relative;
+  padding-left:56px
+}
+
+.step:before{
+  counter-increment:step;
+  content:counter(step);
+  position:absolute;
+  left:0;
+  top:0;
+  width:38px;
+  height:38px;
+  border-radius:50%;
+  display:grid;
+  place-items:center;
+  background:var(--accent);
+  color:#031008;
+  font-weight:900
+}
+
+.contact{
+  display:grid;
+  grid-template-columns:1.2fr .8fr;
+  gap:20px
+}
+
+.contact-box{
+  background:linear-gradient(145deg,#10243a,#0b1727);
+  border:1px solid var(--line);
+  border-radius:20px;
+  padding:28px
+}
+
+.contact-item{
+  padding:13px 0;
+  border-bottom:1px solid var(--line)
+}
+
+.contact-item:last-child{
+  border:0
+}
+
+.contact-item small{
+  display:block;
+  color:var(--muted);
+  margin-bottom:3px
+}
+
+footer{
+  padding:30px 0;
+  border-top:1px solid var(--line);
+  color:var(--muted);
+  font-size:.9rem
+}
+
+.notice{
+  margin-top:20px;
+  color:#8fa2b8;
+  font-size:.83rem
+}
+
+@media(max-width:760px){
+  nav{
+    display:none
+  }
+
+  .grid,.contact{
+    grid-template-columns:1fr
+  }
+
+  .hero{
+    padding-top:55px
+  }
+
+  .card{
+    padding:20px
+  }
+
+  section{
+    padding:45px 0
+  }
+}
+</style>
 </head>
+
 <body>
-  <header>
-    <nav class="nav">
-      <div class="brand">Dr Ignitious Digital Solutions</div>
-      <a class="btn small" href="#contact">Contact</a>
+
+<header>
+  <div class="container nav">
+
+    <a class="brand" href="#">
+      Dr. Ignitious <span>Digital Solutions</span>
+    </a>
+
+    <nav>
+      <a href="#services">Services</a>
+      <a href="#how">How It Works</a>
+      <a href="#why">Why Us</a>
+      <a href="#contact">Contact</a>
     </nav>
-  </header>
 
-  <main>
-    <section class="hero">
-      <p class="tag">RELIABLE DIGITAL WORLD</p>
-      <h1>Simple digital solutions you can trust.</h1>
-      <p>Phone accessories, digital services and practical technology support — made simple.</p>
-      <div class="actions">
-        <a class="btn" href="https://wa.me/256706778662" target="_blank" rel="noopener">WhatsApp Us</a>
-        <a class="btn outline" href="mailto:tignitious39@gmail.com">Email Us</a>
+  </div>
+</header>
+
+<main>
+
+<section class="hero">
+  <div class="container">
+
+    <span class="badge">
+      RELIABLE DIGITAL WORLD
+    </span>
+
+    <h1>
+      Simple digital solutions
+      <span>you can trust.</span>
+    </h1>
+
+    <p>
+      Phone accessories, digital services and practical technology
+      support — designed to be simple, useful and easy to access
+      from your phone.
+    </p>
+
+    <div class="buttons">
+
+      <a class="btn primary"
+         href="https://wa.me/256706778662?text=Hello%20Dr.%20Ignitious%20Digital%20Solutions%2C%20I%20would%20like%20to%20make%20an%20inquiry.">
+        💬 Chat on WhatsApp
+      </a>
+
+      <a class="btn secondary"
+         href="tel:+256706778662">
+        📞 Call 0706 778 662
+      </a>
+
+    </div>
+
+  </div>
+</section>
+
+
+<section id="services">
+
+  <div class="container">
+
+    <h2 class="section-title">
+      What we offer
+    </h2>
+
+    <p class="section-sub">
+      Practical solutions for everyday digital needs.
+    </p>
+
+    <div class="grid">
+
+      <article class="card">
+        <div class="icon">📱</div>
+        <h3>Phone Accessories</h3>
+        <p>
+          Useful phone accessories for everyday school,
+          work and personal use.
+        </p>
+      </article>
+
+      <article class="card">
+        <div class="icon">💻</div>
+        <h3>Digital Services</h3>
+        <p>
+          Website, document and other practical digital
+          support tailored to your needs.
+        </p>
+      </article>
+
+      <article class="card">
+        <div class="icon">🛠️</div>
+        <h3>Tech Support</h3>
+        <p>
+          Friendly help with common phone, computer
+          and digital problems.
+        </p>
+      </article>
+
+    </div>
+
+  </div>
+
+</section>
+
+
+<section id="how">
+
+  <div class="container">
+
+    <h2 class="section-title">
+      How it works
+    </h2>
+
+    <p class="section-sub">
+      A straightforward way to get help.
+    </p>
+
+    <div class="grid steps">
+
+      <article class="card step">
+        <h3>Tell us what you need</h3>
+        <p>
+          Send a WhatsApp message or call us with your request.
+        </p>
+      </article>
+
+      <article class="card step">
+        <h3>Get a clear response</h3>
+        <p>
+          We discuss the service, availability and any
+          applicable price before proceeding.
+        </p>
+      </article>
+
+      <article class="card step">
+        <h3>Receive the solution</h3>
+        <p>
+          We provide the agreed product or digital service
+          and support.
+        </p>
+      </article>
+
+    </div>
+
+  </div>
+
+</section>
+
+
+<section id="why">
+
+  <div class="container">
+
+    <h2 class="section-title">
+      Why choose DIDS?
+    </h2>
+
+    <p class="section-sub">
+      Built around clear communication and practical service.
+    </p>
+
+    <div class="grid">
+
+      <article class="card">
+        <div class="icon">✓</div>
+        <h3>Clear communication</h3>
+        <p>
+          Simple explanations without unnecessary complexity.
+        </p>
+      </article>
+
+      <article class="card">
+        <div class="icon">⚡</div>
+        <h3>Convenient support</h3>
+        <p>
+          Contact us directly from your phone through
+          WhatsApp or a call.
+        </p>
+      </article>
+
+      <article class="card">
+        <div class="icon">🔒</div>
+        <h3>Privacy-minded</h3>
+        <p>
+          We avoid asking customers to create unnecessary
+          accounts on this website.
+        </p>
+      </article>
+
+    </div>
+
+  </div>
+
+</section>
+
+
+<section id="contact">
+
+  <div class="container">
+
+    <h2 class="section-title">
+      Let's work together
+    </h2>
+
+    <p class="section-sub">
+      Have a question, need an accessory or want a digital service?
+    </p>
+
+    <div class="contact">
+
+      <div class="contact-box">
+
+        <h3>Contact DIDS</h3>
+
+        <div class="contact-item">
+          <small>WhatsApp / Phone</small>
+          <a href="tel:+256706778662">
+            0706 778 662
+          </a>
+        </div>
+
+        <div class="contact-item">
+          <small>Alternative number</small>
+          <a href="tel:+256784051927">
+            0784 051 927
+          </a>
+        </div>
+
+        <div class="contact-item">
+          <small>Email</small>
+          <a href="mailto:tignitious39@gmail.com">
+            tignitious39@gmail.com
+          </a>
+        </div>
+
+        <div class="buttons">
+
+          <a class="btn primary"
+             href="https://wa.me/256706778662?text=Hello%20Dr.%20Ignitious%20Digital%20Solutions%2C%20I%20would%20like%20to%20make%20an%20inquiry.">
+            Chat on WhatsApp
+          </a>
+
+          <a class="btn secondary"
+             href="mailto:tignitious39@gmail.com">
+            Send Email
+          </a>
+
+        </div>
+
       </div>
-    </section>
 
-    <section class="section">
-      <h2>Our Services</h2>
-      <div class="cards">
-        <article><h3>Phone Accessories</h3><p>Quality accessories for everyday phone use.</p></article>
-        <article><h3>Digital Services</h3><p>Website, document and other practical digital support.</p></article>
-        <article><h3>Tech Support</h3><p>Friendly help with common digital and phone-related needs.</p></article>
+
+      <div class="contact-box">
+
+        <h3>Our promise</h3>
+
+        <p>
+          Reliable digital solutions, practical technology
+          support and clear customer communication.
+        </p>
+
+        <p class="notice">
+          For orders or services, confirm availability and
+          price with DIDS before making any payment.
+        </p>
+
       </div>
-    </section>
 
-    <section class="section trust">
-      <h2>Why choose us?</h2>
-      <ul>
-        <li>Clear and straightforward service</li>
-        <li>Mobile-friendly communication</li>
-        <li>Customer-focused support</li>
-        <li>No unnecessary account registration</li>
-      </ul>
-    </section>
+    </div>
 
-    <section id="contact" class="section contact">
-      <h2>Contact</h2>
-      <p><strong>WhatsApp / Phone:</strong> 0706 778 662 or 0784 051 927</p>
-      <p><strong>Email:</strong> tignitious39@gmail.com</p>
-      <div class="actions">
-        <a class="btn" href="https://wa.me/256706778662" target="_blank" rel="noopener">Chat on WhatsApp</a>
-        <a class="btn outline" href="tel:+256706778662">Call</a>
-      </div>
-    </section>
-  </main>
+  </div>
 
-  <footer>
-    <p>© 2026 Dr Ignitious Digital Solutions. All rights reserved.</p>
-  </footer>
+</section>
+
+</main>
+
+
+<footer>
+  <div class="container">
+    © 2026 Dr. Ignitious Digital Solutions (DIDS).
+    All rights reserved.
+  </div>
+</footer>
+
 </body>
-</html>
+  </html>
